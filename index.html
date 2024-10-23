@@ -1,2 +1,42 @@
-<h1>Hello</h1>
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OAuth Redirect</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            // Log the full redirected URL
+            console.log('Redirected URL:', window.location.href);
+
+            // Extract the fragment from the URL (after the '#')
+            const fragment = window.location.hash.substring(1);
+            console.log('URL Fragment:', fragment);
+
+            // Parse the fragment into parameters
+            const params = new URLSearchParams(fragment);
+
+            // Log all parameters
+            params.forEach((value, key) => {
+                console.log(`Parameter ${key}:`, value);
+            });
+
+            // Extract tokens
+            const accessToken = params.get('access_token');
+            const refreshToken = params.get('refresh_token');
+
+            // Log extracted tokens
+            console.log('Access Token:', accessToken);
+            console.log('Refresh Token:', refreshToken);
+
+            // Construct the app URL with query parameters
+            const appUrl = `io.flutter.i2b://ink2bits.com/HomePage?accessToken=${encodeURIComponent(accessToken)}&refreshToken=${encodeURIComponent(refreshToken)}`;
+            console.log('Redirecting to App URL:', appUrl);
+
+            // Redirect to your app
+            window.location.href = appUrl;
+        };
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>

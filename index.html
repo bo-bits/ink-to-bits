@@ -12,7 +12,7 @@
 
             if (code) {
                 // Construct the app URL with the code as a query parameter
-                const appUrl = `io.flutter.i2b://ink2bits.com/HomePage?code=${encodeURIComponent(code)}`;
+                const appUrl = `io.flutter.i2b://ink2bits.com/Callback?code=${encodeURIComponent(code)}`;
 
                 // Redirect to the app
                 window.location.href = appUrl;
